@@ -4,23 +4,24 @@
 <ul>
     {{#each todos}}
     <li class="todo">
+        <form action="/complete" method="POST">
         <label>
             {{#if completed}}
-                <input type="checkbox" checked>
+                <input type="checkbox" checked name="completed">
                 <span class="comleted">{{title}}</span>
-
             {{else}}
-                <input type="checkbox">
+                <input type="checkbox" name="completed">
                 <span>{{title}}</span>
             {{/if}}
+
+            <input type="hidden" value="{{_id}}" name="id">
         
-            <button class="btn-small">Save</button>
+            <button class="btn-small" type="submit">Save</button>
         </label>
+        </form>
     </li>
     {{/each}}
 </ul>
-    
-
 {{else}}
 <p>No todos!</p>
 {{/if}}
